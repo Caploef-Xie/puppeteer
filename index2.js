@@ -48,17 +48,16 @@ async function login(account, password, page) {
     ]);
     await page.waitForSelector('input[type="password"]', { visible: true });
     await page.type('input[type="password"]', password);
-    await page.waitFor(3500);
  
     await Promise.all([
         page.waitForNavigation(),
         await page.keyboard.press('Enter')
     ]);
-    await page.waitForSelector('#__NEXT_DATA__');
+    await page.waitFor(3500);
+    await page.goto('https://observablehq.com');
     let cookies = await page.cookies();
     let strCookie = cookies.map((x) => { return x.name + "=" + x.value + ";" }).join('');
     console.log(strCookie)
-    console.log(await page.$eval('#__NEXT_DATA__', e => document.querySelector('#__NEXT_DATA__').innerText))
     // console.log(await page.$eval('input[type="password"]', e => document.querySelector('input[type="password"]').value))
     await console.log("Password entered successfully ")
 }
