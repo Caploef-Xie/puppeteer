@@ -1,12 +1,13 @@
 const puppeteer = require('puppeteer-extra');
 puppeteer.use(require('puppeteer-extra-plugin-anonymize-ua')({
-  customFn: (ua) => 'MyCoolAgent/' + ua.replace('Chrome', 'Beer')})
+    customFn: (ua) => 'MyCoolAgent/' + ua.replace('Chrome', 'Beer')
+})
 )
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 var format = require('date-fns')
 puppeteer.use(StealthPlugin());
 //
-puppeteer.launch( { headless: false }).then(async browser => {
+puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser => {
     const page = await browser.newPage();
     let data = [];
 
