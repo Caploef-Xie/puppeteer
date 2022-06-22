@@ -6,7 +6,7 @@ var options = {
     'authority': 'api.observablehq.com',
     'accept': '*/*',
     'accept-language': 'zh-CN,zh;q=0.9',
-    'cookie': 'I=eyJpZCI6IjgyN2Y2OWEwZDM4MDc0ZDYiLCJpZHMiOlt7ImlkIjoiYjYzOGIwNTVkYWI3ZDYwNiIsIm9yZyI6InN0YXJib2FyZHZlbnR1cmVzLmlvIiwic28iOjE2NTU4OTE3NTM0MzAsImF0IjoxNjU1ODkxNzUzNDMwfV0sImV4cGlyYXRpb24iOjE2NTY3NDE2MDAwMDB9.sWTuEI8tgF6IRx1ZmtQVP4HFO51f1FIJU9oixwxUzNE=;_ga=GA1.2.509244172.1655891742;D=421ebc39-5537-4455-b8cf-2342a8fabd84|1687427741764;_gid=GA1.2.764762393.1655891742;T=c8b337bcdf9b57e4140613c69563f05e;_gat=1;',
+    'cookie': '__Host-GAPS=1:ahfK1ufUOZ3p48fEHiItggWS4Jffmw:D_OqSRU3jmovMywX;NID=511=tihOeNVlp_rgD27nmI11E4mSQHKctG_sOPtqRgsIWJWUWEUIPhOtgRzegmBukyK7BdQTlH_IAEhNSX1XrstfUyy1gneY_kxw8kSIV3c-xLZ5GE9ytTafakij2FAV0eVs3G22LOIV8SR3gvd0U92Fl8tzilDYASVn-hhX3k3UPLI;',
     'origin': 'https://observablehq.com',
     'referer': 'https://observablehq.com/',
     'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="102", "Google Chrome";v="102"',
