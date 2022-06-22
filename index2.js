@@ -11,7 +11,7 @@ puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser 
     const page = await browser.newPage();
     let data = [];
 
-    await page.setExtraHTTPHeaders({
+    await page.setExtraHTTPHeaders({ 
         'accept-language': 'en-US,en;q=0.9,hy;q=0.8'
     });
 
