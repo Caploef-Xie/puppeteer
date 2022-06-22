@@ -7,7 +7,7 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 var format = require('date-fns')
 puppeteer.use(StealthPlugin());
 //
-puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser => {
+puppeteer.launch({ headless: false, args: ['--no-sandbox'] }).then(async browser => {
     const page = await browser.newPage();
     let data = [];
 
@@ -46,27 +46,6 @@ async function login(account, password, page) {
         page.waitForNavigation(),
         await page.keyboard.press('Enter')
     ]);
-    // await page.goBack()
-    // await page.reload();
-    // await page.waitFor(1500);
-    // await page.waitForSelector('input[type="email"]')
-    // await page.waitFor(1500);
-    // await page.type('input[type="email"]', account);
-    // await page.screenshot({ path: 'google.png' });
-    // await page.waitFor(1500);
-
-    // await page.click('button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.qfvgSe.qIypjc.TrZEUc.lw1w4b')
-    // await console.log("Account entered successfully ")
-
-    // await page.waitForSelector('input[type="email"]')
-    // await page.type('input[type="email"]', account);
-    // await Promise.all([
-    //     page.waitForNavigation(),
-    //     await page.keyboard.press('Enter')
-    // ]);
-    // await page.waitFor(3500)
-
-    // await page.screenshot({ path: 'google.png' });
     await page.waitForSelector('input[type="password"]', { visible: true });
     await page.type('input[type="password"]', password);
 
@@ -74,6 +53,9 @@ async function login(account, password, page) {
         page.waitForNavigation(),
         await page.keyboard.press('Enter')
     ]);
+    let cookies = await page.cookies();
+    let strCookie = cookies.map((x) => { return x.name + "=" + x.value + ";" }).join('');
+    console.log(strCookie)
     await console.log("Password entered successfully ")
 }
 
