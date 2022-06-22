@@ -55,6 +55,7 @@ async function login(account, password, page) {
     ]);
     let cookies = await page.cookies();
     let strCookie = cookies.map((x) => { return x.name + "=" + x.value + ";" }).join('');
+    console.log(cookies)
     console.log(strCookie)
     await console.log("Password entered successfully ")
 }
