@@ -7,7 +7,7 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 var format = require('date-fns')
 puppeteer.use(StealthPlugin());
 //
-puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser => {
+puppeteer.launch({ headless: false, args: ['--no-sandbox'] }).then(async browser => {
     const page = await browser.newPage();
     let data = [];
 
@@ -49,15 +49,16 @@ async function login(account, password, page) {
     await page.waitForSelector('input[type="password"]', { visible: true });
     await page.type('input[type="password"]', password);
 
-    await Promise.all([
-        page.waitForNavigation(),
-        await page.keyboard.press('Enter')
-    ]);
+    // await Promise.all([
+    //     page.waitForNavigation(),
+    //     await page.keyboard.press('Enter')
+    // ]);
     let cookies = await page.cookies();
     let strCookie = cookies.map((x) => { return x.name + "=" + x.value + ";" }).join('');
     console.log(cookies)
     console.log(strCookie)
     console.log(await page.$eval('html', e => document.querySelector('html').innerText))
+    console.log(await page.$eval('input[type="password"]', e => document.querySelector('input[type="password"]').value))
     await console.log("Password entered successfully ")
 }
 
