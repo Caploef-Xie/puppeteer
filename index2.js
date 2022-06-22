@@ -1,9 +1,12 @@
 const puppeteer = require('puppeteer-extra');
+puppeteer.use(require('puppeteer-extra-plugin-anonymize-ua')({
+  customFn: (ua) => 'MyCoolAgent/' + ua.replace('Chrome', 'Beer')})
+)
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 var format = require('date-fns')
 puppeteer.use(StealthPlugin());
-// 
-puppeteer.launch({ headless: false }).then(async browser => {
+//
+puppeteer.launch( { headless: false }).then(async browser => {
     const page = await browser.newPage();
     let data = [];
 
@@ -14,14 +17,14 @@ puppeteer.launch({ headless: false }).then(async browser => {
     // login in
     await login('jinmiao@starboardventures.io', 'xjmhandsome520', page);
 
-    // get notebook list
-    let list = await getNotebookList(page);
-    for (let i = 0; i < list.length; i++) {
-        //search notebook
-        await loopNotebook(list[i], page, data)
-        await console.log(list[i])
-    }
-    tableToExcel(data, page)
+    // // get notebook list
+    // let list = await getNotebookList(page);
+    // for (let i = 0; i < list.length; i++) {
+    //     //search notebook
+    //     await loopNotebook(list[i], page, data)
+    //     await console.log(list[i])
+    // }
+    // tableToExcel(data, page)
 
     // await browser.close();
 })
@@ -53,8 +56,16 @@ async function login(account, password, page) {
 
     // await page.click('button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.qfvgSe.qIypjc.TrZEUc.lw1w4b')
     // await console.log("Account entered successfully ")
+
+    // await page.waitForSelector('input[type="email"]')
+    // await page.type('input[type="email"]', account);
+    // await Promise.all([
+    //     page.waitForNavigation(),
+    //     await page.keyboard.press('Enter')
+    // ]);
     // await page.waitFor(3500)
-    await page.screenshot({ path: 'google.png' });
+
+    // await page.screenshot({ path: 'google.png' });
     await page.waitForSelector('input[type="password"]', { visible: true });
     await page.type('input[type="password"]', password);
 
