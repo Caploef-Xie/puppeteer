@@ -31,21 +31,21 @@ puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser 
     google.waitForNavigation(),
     await google.keyboard.press('Enter')
   ]);
-  await google.waitFor(2500);
+  await google.waitFor(9500);
   console.log(await google.$eval('html', e => document.querySelector('html').innerHTML))
 
-  await google.goto('https://observablehq.com');
-  await google.click('button.dark-gray.pointer.animate-all.hover-bg-black-05.flex.mr2.pa2.f6.fw6.br2.ba.items-center.bg-transparent.b--transparent.relative');
-  await google.click('button[value="google"]');
+  // await google.goto('https://observablehq.com');
+  // await google.click('button.dark-gray.pointer.animate-all.hover-bg-black-05.flex.mr2.pa2.f6.fw6.br2.ba.items-center.bg-transparent.b--transparent.relative');
+  // await google.click('button[value="google"]');
+  // // await google.click('.lCoei:first-child[data-item-index="0"]');
+  // await google.waitForSelector('.lCoei:first-child[data-item-index="0"]', { visible: true });
+  // await google.waitFor(2500);
   // await google.click('.lCoei:first-child[data-item-index="0"]');
-  await google.waitForSelector('.lCoei:first-child[data-item-index="0"]', { visible: true });
-  await google.waitFor(2500);
-  await google.click('.lCoei:first-child[data-item-index="0"]');
-  await google.waitFor(9500);
+  // await google.waitFor(9500);
 
-  let cookies = await google.cookies();
-  let strCookie = cookies.map((x) => { return x.name + "=" + x.value + ";" }).join('');
-  console.log(strCookie)
+  // let cookies = await google.cookies();
+  // let strCookie = cookies.map((x) => { return x.name + "=" + x.value + ";" }).join('');
+  // console.log(strCookie)
   // await google.keyboard.press('Tab')
   // await google.keyboard.press('Tab')  
   // await google.keyboard.press('Enter')
