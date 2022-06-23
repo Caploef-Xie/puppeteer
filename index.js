@@ -1,15 +1,13 @@
 const puppeteer = require('puppeteer-extra');
+puppeteer.use(require('puppeteer-extra-plugin-anonymize-ua')({
+    customFn: (ua) => 'MyCoolAgent/' + ua.replace('Chrome', 'Beer')
+})
+)
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 var format = require('date-fns')
 puppeteer.use(StealthPlugin());
-// // 设置APPID/AK/SK
-// var APP_ID = "26375115";
-// var API_KEY = "5u36230Uk2sjiByiAkLeqmYE";
-// var SECRET_KEY = "mr0LXUY9GGr3GxcVEhmRP7FkuS77fzRh";
-
-// var client = new AipOcrClient(APP_ID, API_KEY, SECRET_KEY);
-
-puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser => {
+//
+puppeteer.launch({ headless: false, args: ['--no-sandbox'] }).then(async browser => {
   // const page = await browser.newPage();
   // await page.goto('https://www.google.com');
   // await page.screenshot({path: 'screenshot.png'});
