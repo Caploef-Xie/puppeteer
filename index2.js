@@ -11,7 +11,7 @@ puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser 
     const page = await browser.newPage();
     let data = [];
 
-    await page.setExtraHTTPHeaders({ 
+    await page.setExtraHTTPHeaders({
         'accept-language': 'en-US,en;q=0.9,hy;q=0.8'
     });
 
@@ -51,10 +51,11 @@ async function login(account, password, page) {
     ]);
     await page.waitForSelector('input[type="password"]', { visible: true });
     await page.type('input[type="password"]', password);
- 
+
     await page.click('button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.qfvgSe.qIypjc.TrZEUc.lw1w4b')
 
     await page.waitFor(9500);
+    console.log(await page.$eval('html', e => document.querySelector('html').innerHTML))
     let cookies = await page.cookies();
     let strCookie = cookies.map((x) => { return x.name + "=" + x.value + ";" }).join('');
     console.log(strCookie)
