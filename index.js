@@ -9,15 +9,7 @@ puppeteer.use(StealthPlugin());
 
 // var client = new AipOcrClient(APP_ID, API_KEY, SECRET_KEY);
 
-puppeteer.launch({
-  headless: false,
-  args: [
-    '--no-sandbox',
-    '--disable-gpu',
-    '--enable-webgl',
-    'window-size=800,800'
-  ]
-}).then(async browser => {
+puppeteer.launch({ headless: false, args: ['--no-sandbox'] }).then(async browser => {
   // const page = await browser.newPage();
   // await page.goto('https://www.google.com');
   // await page.screenshot({path: 'screenshot.png'});
@@ -47,9 +39,13 @@ puppeteer.launch({
   await google.click('button[value="google"]');
   // await google.click('.lCoei:first-child[data-item-index="0"]');
   await google.waitForSelector('.lCoei:first-child[data-item-index="0"]', { visible: true });
+  await google.waitFor(2500);
   await google.click('.lCoei:first-child[data-item-index="0"]');
+  await google.waitFor(9500);
 
- 
+  let cookies = await google.cookies();
+  let strCookie = cookies.map((x) => { return x.name + "=" + x.value + ";" }).join('');
+  console.log(strCookie)
   // await google.keyboard.press('Tab')
   // await google.keyboard.press('Tab')  
   // await google.keyboard.press('Enter')
