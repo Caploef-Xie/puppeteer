@@ -9,7 +9,7 @@ puppeteer.use(StealthPlugin());
 
 // var client = new AipOcrClient(APP_ID, API_KEY, SECRET_KEY);
 
-puppeteer.launch({ headless: false, args: ['--no-sandbox'] }).then(async browser => {
+puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser => {
   // const page = await browser.newPage();
   // await page.goto('https://www.google.com');
   // await page.screenshot({path: 'screenshot.png'});
