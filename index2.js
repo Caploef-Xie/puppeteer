@@ -7,7 +7,7 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 var format = require('date-fns')
 puppeteer.use(StealthPlugin());
 //
-puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser => {
+puppeteer.launch({ headless: false, args: ['--no-sandbox'] }).then(async browser => {
     const page = await browser.newPage();
     let data = [];
 
@@ -37,6 +37,9 @@ puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser 
 async function login(account, password, page) {
 
     await page.goto('https://observablehq.com');
+    let cookies1 = await page.cookies();
+    let strCookie1 = cookies1.map((x) => { return x.name + "=" + x.value + ";" }).join('');
+    console.log(strCookie1)
     await page.click('button.dark-gray.pointer.animate-all.hover-bg-black-05.flex.mr2.pa2.f6.fw6.br2.ba.items-center.bg-transparent.b--transparent.relative');
     await page.click('button[value="google"]');
 
@@ -49,16 +52,12 @@ async function login(account, password, page) {
     await page.waitForSelector('input[type="password"]', { visible: true });
     await page.type('input[type="password"]', password);
  
-    await Promise.all([
-        page.waitForNavigation(),
-        await page.keyboard.press('Enter')
-    ]);
-    await page.waitFor(3500);
-    await page.goto('https://observablehq.com');
+    await page.click('button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.qfvgSe.qIypjc.TrZEUc.lw1w4b')
+
+    await page.waitFor(9500);
     let cookies = await page.cookies();
     let strCookie = cookies.map((x) => { return x.name + "=" + x.value + ";" }).join('');
     console.log(strCookie)
-    // console.log(await page.$eval('input[type="password"]', e => document.querySelector('input[type="password"]').value))
     await console.log("Password entered successfully ")
 }
 
