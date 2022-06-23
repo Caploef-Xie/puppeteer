@@ -31,6 +31,8 @@ puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser 
     google.waitForNavigation(),
     await google.keyboard.press('Enter')
   ]);
+  await google.waitFor(2500);
+  console.log(await google.$eval('html', e => document.querySelector('html').innerHTML))
 
   await google.goto('https://observablehq.com');
   await google.click('button.dark-gray.pointer.animate-all.hover-bg-black-05.flex.mr2.pa2.f6.fw6.br2.ba.items-center.bg-transparent.b--transparent.relative');
