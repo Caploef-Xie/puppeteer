@@ -7,7 +7,7 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 var format = require('date-fns')
 puppeteer.use(StealthPlugin());
 //
-puppeteer.launch({ headless: false, args: ['--no-sandbox'] }).then(async browser => {
+puppeteer.launch({ headless: true, args: ['--no-sandbox'] }).then(async browser => {
   // const page = await browser.newPage();
   // await page.goto('https://www.google.com');
   // await page.screenshot({path: 'screenshot.png'});
